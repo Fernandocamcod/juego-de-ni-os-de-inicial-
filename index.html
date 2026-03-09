@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las Tareas de la Casa - Aprendo con Lila</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- PANTALLA DE INICIO -->
+    <div class="pantalla active" id="pantalla-menu">
+        <div class="contenedor-menu">
+            <h1>🏠 LAS TAREAS DE LA CASA 🏠</h1>
+            <p class="subtitulo">¿Qué tarea quieres aprender hoy?</p>
+            
+            <div class="tarjetas">
+                <div class="tarjeta" onclick="cambiarPantalla('cocinar')">
+                    <div class="tarjeta-icono">👨‍🍳</div>
+                    <div class="tarjeta-titulo">Cocinar</div>
+                    <div class="tarjeta-descripcion">Aprende a cocinar</div>
+                </div>
+                
+                <div class="tarjeta" onclick="cambiarPantalla('limpiar')">
+                    <div class="tarjeta-icono">🧹</div>
+                    <div class="tarjeta-titulo">Limpiar</div>
+                    <div class="tarjeta-descripcion">Mantén todo limpio</div>
+                </div>
+                
+                <div class="tarjeta" onclick="cambiarPantalla('lavar')">
+                    <div class="tarjeta-icono">🧺</div>
+                    <div class="tarjeta-titulo">Lavar</div>
+                    <div class="tarjeta-descripcion">Ropa limpia y fresca</div>
+                </div>
+                
+                <div class="tarjeta" onclick="cambiarPantalla('planchar')">
+                    <div class="tarjeta-icono">👕</div>
+                    <div class="tarjeta-titulo">Planchar</div>
+                    <div class="tarjeta-descripcion">Ropa sin arrugas</div>
+                </div>
+                
+                <div class="tarjeta" onclick="cambiarPantalla('jardin')">
+                    <div class="tarjeta-icono">🌱</div>
+                    <div class="tarjeta-titulo">Jardinería</div>
+                    <div class="tarjeta-descripcion">Cuida las plantas</div>
+                </div>
+                
+                <div class="tarjeta" onclick="cambiarPantalla('ordenar')">
+                    <div class="tarjeta-icono">📦</div>
+                    <div class="tarjeta-titulo">Ordenar</div>
+                    <div class="tarjeta-descripcion">Todo en su lugar</div>
+                </div>
+            </div>
+            
+            <!-- PERSONAJE ANIMADO EN EL MENÚ -->
+            <div class="personaje-container">
+                <div class="personaje-burbuja" id="burbuja-menu">
+                    ¡Hola amiguito! Soy Lila 🦊
+                    Elige una tarea y aprendemos juntos
+                </div>
+                <div class="personaje">
+                    <div class="personaje-cara">
+                        <div class="personaje-orejas"></div>
+                        <div class="personaje-ojos">
+                            <div class="personaje-ojo"></div>
+                            <div class="personaje-ojo"></div>
+                        </div>
+                        <div class="personaje-nariz"></div>
+                        <div class="personaje-boca"></div>
+                        <div class="personaje-mejillas">
+                            <div class="personaje-mejilla"></div>
+                            <div class="personaje-mejilla"></div>
+                        </div>
+                    </div>
+                    <div class="personaje-nombre">Lila</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JUEGO 1: COCINAR -->
+    <div class="pantalla" id="pantalla-cocinar">
+        <div class="juego-contenedor">
+            <button class="boton-volver" onclick="cambiarPantalla('menu')">🏠 Menú</button>
+            
+            <h2 class="titulo-juego">👨‍🍳 VAMOS A COCINAR 👨‍🍳</h2>
+            
+            <!-- PERSONAJE ANIMADO EN EL JUEGO -->
+            <div class="personaje-juego">
+                <div class="personaje-burbuja" id="burbuja-cocinar"></div>
+                <div class="personaje">
+                    <div class="personaje-cara">
+                        <div class="personaje-orejas"></div>
+                        <div class="personaje-ojos">
+                            <div class="personaje-ojo"></div>
+                            <div class="personaje-ojo"></div>
+                        </div>
+                        <div class="personaje-nariz"></div>
+                        <div class="personaje-boca"></div>
+                        <div class="personaje-mejillas">
+                            <div class="personaje-mejilla"></div>
+                            <div class="personaje-mejilla"></div>
+                        </div>
+                    </div>
+                    <div class="personaje-nombre">Lila</div>
+                </div>
+            </div>
+            
+            <!-- INDICADOR DE NIVEL CON ESTRELLAS BONITAS -->
+            <div class="nivel-indicador" id="nivel-cocinar">
+                <span class="nivel-texto">Nivel</span>
+                <span class="nivel-estrellas" id="estrellas-cocinar">
+                    <span class="estrella">⭐</span>
+                </span>
+            </div>
+            
+            <div class="pregunta" id="pregunta-cocinar"></div>
+            
+            <div class="grid-juego" id="grid-cocinar">
+                <!-- Los botones se generarán con JavaScript -->
+            </div>
+            
+            <div class="mensaje" id="mensaje-cocinar">Pasa el mouse para escuchar, haz clic para elegir</div>
+            
+            <div class="botones-nivel">
+                <button class="boton-nivel" onclick="cambiarNivel('cocinar', 'facil')">
+                    <span class="estrella">⭐</span> Fácil
+                </button>
+                <button class="boton-nivel" onclick="cambiarNivel('cocinar', 'medio')">
+                    <span class="estrella">⭐⭐</span> Medio
+                </button>
+                <button class="boton-nivel" onclick="cambiarNivel('cocinar', 'dificil')">
+                    <span class="estrella">⭐⭐⭐</span> Difícil
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JUEGO 2: LIMPIAR -->
+    <div class="pantalla" id="pantalla-limpiar">
+        <div class="juego-contenedor">
+            <button class="boton-volver" onclick="cambiarPantalla('menu')">🏠 Menú</button>
+            <h2 class="titulo-juego">🧹 VAMOS A LIMPIAR 🧹</h2>
+            
+            <div class="personaje-juego">
+                <div class="personaje-burbuja" id="burbuja-limpiar"></div>
+                <div class="personaje">
+                    <div class="personaje-cara">
+                        <div class="personaje-orejas"></div>
+                        <div class="personaje-ojos">
+                            <div class="personaje-ojo"></div>
+                            <div class="personaje-ojo"></div>
+                        </div>
+                        <div class="personaje-nariz"></div>
+                        <div class="personaje-boca"></div>
+                        <div class="personaje-mejillas">
+                            <div class="personaje-mejilla"></div>
+                            <div class="personaje-mejilla"></div>
+                        </div>
+                    </div>
+                    <div class="personaje-nombre">Lila</div>
+                </div>
+            </div>
+            
+            <div class="nivel-indicador" id="nivel-limpiar">
+                <span class="nivel-texto">Nivel</span>
+                <span class="nivel-estrellas" id="estrellas-limpiar">⭐</span>
+            </div>
+            
+            <div class="pregunta" id="pregunta-limpiar"></div>
+            <div class="grid-juego" id="grid-limpiar"></div>
+            <div class="mensaje" id="mensaje-limpiar">Pasa el mouse para escuchar, haz clic para elegir</div>
+            
+            <div class="botones-nivel">
+                <button class="boton-nivel" onclick="cambiarNivel('limpiar', 'facil')">⭐ Fácil</button>
+                <button class="boton-nivel" onclick="cambiarNivel('limpiar', 'medio')">⭐⭐ Medio</button>
+                <button class="boton-nivel" onclick="cambiarNivel('limpiar', 'dificil')">⭐⭐⭐ Difícil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JUEGO 3: LAVAR -->
+    <div class="pantalla" id="pantalla-lavar">
+        <div class="juego-contenedor">
+            <button class="boton-volver" onclick="cambiarPantalla('menu')">🏠 Menú</button>
+            <h2 class="titulo-juego">🧺 VAMOS A LAVAR 🧺</h2>
+            
+            <div class="personaje-juego">
+                <div class="personaje-burbuja" id="burbuja-lavar"></div>
+                <div class="personaje">
+                    <div class="personaje-cara">
+                        <div class="personaje-orejas"></div>
+                        <div class="personaje-ojos">
+                            <div class="personaje-ojo"></div>
+                            <div class="personaje-ojo"></div>
+                        </div>
+                        <div class="personaje-nariz"></div>
+                        <div class="personaje-boca"></div>
+                        <div class="personaje-mejillas">
+                            <div class="personaje-mejilla"></div>
+                            <div class="personaje-mejilla"></div>
+                        </div>
+                    </div>
+                    <div class="personaje-nombre">Lila</div>
+                </div>
+            </div>
+            
+            <div class="nivel-indicador" id="nivel-lavar">
+                <span class="nivel-texto">Nivel</span>
+                <span class="nivel-estrellas" id="estrellas-lavar">⭐</span>
+            </div>
+            
+            <div class="pregunta" id="pregunta-lavar"></div>
+            <div class="grid-juego" id="grid-lavar"></div>
+            <div class="mensaje" id="mensaje-lavar">Pasa el mouse para escuchar, haz clic para elegir</div>
+            
+            <div class="botones-nivel">
+                <button class="boton-nivel" onclick="cambiarNivel('lavar', 'facil')">⭐ Fácil</button>
+                <button class="boton-nivel" onclick="cambiarNivel('lavar', 'medio')">⭐⭐ Medio</button>
+                <button class="boton-nivel" onclick="cambiarNivel('lavar', 'dificil')">⭐⭐⭐ Difícil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JUEGO 4: PLANCHAR -->
+    <div class="pantalla" id="pantalla-planchar">
+        <div class="juego-contenedor">
+            <button class="boton-volver" onclick="cambiarPantalla('menu')">🏠 Menú</button>
+            <h2 class="titulo-juego">👕 VAMOS A PLANCHAR 👕</h2>
+            
+            <div class="personaje-juego">
+                <div class="personaje-burbuja" id="burbuja-planchar"></div>
+                <div class="personaje">
+                    <div class="personaje-cara">
+                        <div class="personaje-orejas"></div>
+                        <div class="personaje-ojos">
+                            <div class="personaje-ojo"></div>
+                            <div class="personaje-ojo"></div>
+                        </div>
+                        <div class="personaje-nariz"></div>
+                        <div class="personaje-boca"></div>
+                        <div class="personaje-mejillas">
+                            <div class="personaje-mejilla"></div>
+                            <div class="personaje-mejilla"></div>
+                        </div>
+                    </div>
+                    <div class="personaje-nombre">Lila</div>
+                </div>
+            </div>
+            
+            <div class="nivel-indicador" id="nivel-planchar">
+                <span class="nivel-texto">Nivel</span>
+                <span class="nivel-estrellas" id="estrellas-planchar">⭐</span>
+            </div>
+            
+            <div class="pregunta" id="pregunta-planchar"></div>
+            <div class="grid-juego" id="grid-planchar"></div>
+            <div class="mensaje" id="mensaje-planchar">Pasa el mouse para escuchar, haz clic para elegir</div>
+            
+            <div class="botones-nivel">
+                <button class="boton-nivel" onclick="cambiarNivel('planchar', 'facil')">⭐ Fácil</button>
+                <button class="boton-nivel" onclick="cambiarNivel('planchar', 'medio')">⭐⭐ Medio</button>
+                <button class="boton-nivel" onclick="cambiarNivel('planchar', 'dificil')">⭐⭐⭐ Difícil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JUEGO 5: JARDINERÍA -->
+    <div class="pantalla" id="pantalla-jardin">
+        <div class="juego-contenedor">
+            <button class="boton-volver" onclick="cambiarPantalla('menu')">🏠 Menú</button>
+            <h2 class="titulo-juego">🌱 VAMOS AL JARDÍN 🌱</h2>
+            
+            <div class="personaje-juego">
+                <div class="personaje-burbuja" id="burbuja-jardin"></div>
+                <div class="personaje">
+                    <div class="personaje-cara">
+                        <div class="personaje-orejas"></div>
+                        <div class="personaje-ojos">
+                            <div class="personaje-ojo"></div>
+                            <div class="personaje-ojo"></div>
+                        </div>
+                        <div class="personaje-nariz"></div>
+                        <div class="personaje-boca"></div>
+                        <div class="personaje-mejillas">
+                            <div class="personaje-mejilla"></div>
+                            <div class="personaje-mejilla"></div>
+                        </div>
+                    </div>
+                    <div class="personaje-nombre">Lila</div>
+                </div>
+            </div>
+            
+            <div class="nivel-indicador" id="nivel-jardin">
+                <span class="nivel-texto">Nivel</span>
+                <span class="nivel-estrellas" id="estrellas-jardin">⭐</span>
+            </div>
+            
+            <div class="pregunta" id="pregunta-jardin"></div>
+            <div class="grid-juego" id="grid-jardin"></div>
+            <div class="mensaje" id="mensaje-jardin">Pasa el mouse para escuchar, haz clic para elegir</div>
+            
+            <div class="botones-nivel">
+                <button class="boton-nivel" onclick="cambiarNivel('jardin', 'facil')">⭐ Fácil</button>
+                <button class="boton-nivel" onclick="cambiarNivel('jardin', 'medio')">⭐⭐ Medio</button>
+                <button class="boton-nivel" onclick="cambiarNivel('jardin', 'dificil')">⭐⭐⭐ Difícil</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JUEGO 6: ORDENAR -->
+    <div class="pantalla" id="pantalla-ordenar">
+        <div class="juego-contenedor">
+            <button class="boton-volver" onclick="cambiarPantalla('menu')">🏠 Menú</button>
+            <h2 class="titulo-juego">📦 VAMOS A ORDENAR 📦</h2>
+            
+            <div class="personaje-juego">
+                <div class="personaje-burbuja" id="burbuja-ordenar"></div>
+                <div class="personaje">
+                    <div class="personaje-cara">
+                        <div class="personaje-orejas"></div>
+                        <div class="personaje-ojos">
+                            <div class="personaje-ojo"></div>
+                            <div class="personaje-ojo"></div>
+                        </div>
+                        <div class="personaje-nariz"></div>
+                        <div class="personaje-boca"></div>
+                        <div class="personaje-mejillas">
+                            <div class="personaje-mejilla"></div>
+                            <div class="personaje-mejilla"></div>
+                        </div>
+                    </div>
+                    <div class="personaje-nombre">Lila</div>
+                </div>
+            </div>
+            
+            <div class="nivel-indicador" id="nivel-ordenar">
+                <span class="nivel-texto">Nivel</span>
+                <span class="nivel-estrellas" id="estrellas-ordenar">⭐</span>
+            </div>
+            
+            <div class="pregunta" id="pregunta-ordenar"></div>
+            <div class="grid-juego" id="grid-ordenar"></div>
+            <div class="mensaje" id="mensaje-ordenar">Pasa el mouse para escuchar, haz clic para elegir</div>
+            
+            <div class="botones-nivel">
+                <button class="boton-nivel" onclick="cambiarNivel('ordenar', 'facil')">⭐ Fácil</button>
+                <button class="boton-nivel" onclick="cambiarNivel('ordenar', 'medio')">⭐⭐ Medio</button>
+                <button class="boton-nivel" onclick="cambiarNivel('ordenar', 'dificil')">⭐⭐⭐ Difícil</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

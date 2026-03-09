@@ -1,0 +1,732 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI Emoji', 'Fredoka', cursive, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 50%, #fad0c4 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "🌸🌼🌸🌼";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 40px;
+    opacity: 0.2;
+    animation: flotarFlores 20s linear infinite;
+}
+
+body::after {
+    content: "🐞🦋🐝";
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 50px;
+    opacity: 0.2;
+    animation: flotarFlores 15s linear infinite reverse;
+}
+
+@keyframes flotarFlores {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(10px, -10px) rotate(5deg); }
+    50% { transform: translate(20px, 0) rotate(0deg); }
+    75% { transform: translate(10px, 10px) rotate(-5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* ===== PANTALLAS ===== */
+.pantalla {
+    display: none;
+    width: 100%;
+    max-width: 1200px;
+    animation: aparecer 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    position: relative;
+    z-index: 10;
+}
+
+.pantalla.active {
+    display: block;
+}
+
+@keyframes aparecer {
+    0% { opacity: 0; transform: scale(0.8) rotate(-2deg); }
+    100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+/* ===== MENÚ PRINCIPAL ===== */
+.contenedor-menu {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 90px 90px 60px 60px;
+    padding: 40px 30px;
+    box-shadow: 0 30px 40px rgba(0,0,0,0.2), 0 0 0 8px rgba(255,255,255,0.8), 0 0 0 12px rgba(255,215,215,0.5);
+    border: 4px solid white;
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+}
+
+.contenedor-menu::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,223,186,0.3) 0%, transparent 70%);
+    animation: rotar 20s linear infinite;
+}
+
+@keyframes rotar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+h1 {
+    font-size: 4rem;
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffb6b6, #ffd3b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 5px 5px 0 #ffe0e0, 8px 8px 0 rgba(255,215,215,0.5);
+    text-align: center;
+    margin-bottom: 15px;
+    animation: tituloBaile 3s infinite;
+    position: relative;
+}
+
+@keyframes tituloBaile {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-5px) rotate(-1deg); }
+    75% { transform: translateY(5px) rotate(1deg); }
+}
+
+.subtitulo {
+    font-size: 2.2rem;
+    color: #5a4a4a;
+    background: linear-gradient(145deg, #ffeaa7, #ffddaa);
+    padding: 15px 40px;
+    border-radius: 70px;
+    border: 5px solid white;
+    display: block;
+    margin: 0 auto 40px;
+    text-align: center;
+    width: fit-content;
+    box-shadow: 0 10px 0 #e6b87e, 0 0 30px #ffeaa7;
+}
+
+/* ===== TARJETAS DE JUEGOS ===== */
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.tarjeta {
+    border: 6px solid white;
+    border-radius: 80px;
+    padding: 30px 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    animation: flotar 3s infinite ease-in-out;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 0 rgba(0,0,0,0.1), 0 0 0 4px white;
+}
+
+.tarjeta::before {
+    content: "";
+    position: absolute;
+    top: -30%;
+    left: -30%;
+    width: 160%;
+    height: 160%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.tarjeta:hover::before {
+    opacity: 0.5;
+}
+
+.tarjeta:nth-child(1) { 
+    background: linear-gradient(145deg, #ffb7b7, #ff9e9e);
+    animation-delay: 0s;
+}
+.tarjeta:nth-child(2) { 
+    background: linear-gradient(145deg, #b7e0ff, #9ec9ff);
+    animation-delay: 0.2s;
+}
+.tarjeta:nth-child(3) { 
+    background: linear-gradient(145deg, #ffe5b7, #ffd89e);
+    animation-delay: 0.4s;
+}
+.tarjeta:nth-child(4) { 
+    background: linear-gradient(145deg, #e5b7ff, #d89eff);
+    animation-delay: 0.6s;
+}
+.tarjeta:nth-child(5) { 
+    background: linear-gradient(145deg, #b7ffb7, #9eff9e);
+    animation-delay: 0.8s;
+}
+.tarjeta:nth-child(6) { 
+    background: linear-gradient(145deg, #ffb7e5, #ff9ed8);
+    animation-delay: 1s;
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.tarjeta:hover {
+    transform: scale(1.1) translateY(-15px);
+    box-shadow: 0 25px 0 rgba(0,0,0,0.15), 0 0 0 6px white, 0 0 30px gold;
+    z-index: 20;
+}
+
+.tarjeta-icono {
+    font-size: 6rem;
+    line-height: 1;
+    margin-bottom: 15px;
+    filter: drop-shadow(5px 5px 0 rgba(0,0,0,0.1));
+}
+
+.tarjeta-titulo {
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    background: rgba(0,0,0,0.1);
+    padding: 10px;
+    border-radius: 50px;
+    margin: 10px 20px;
+}
+
+.tarjeta-descripcion {
+    font-size: 1.4rem;
+    color: white;
+    background: rgba(255,255,255,0.3);
+    padding: 8px 20px;
+    border-radius: 40px;
+    display: inline-block;
+}
+
+/* ===== PERSONAJE ANIMADO (LILA) ===== */
+.personaje-container, .personaje-juego {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin: 30px 0;
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 100px;
+    border: 4px solid white;
+    backdrop-filter: blur(5px);
+    animation: personajeAparecer 1s ease;
+}
+
+.personaje-juego {
+    margin: 0 0 20px 0;
+}
+
+@keyframes personajeAparecer {
+    0% { transform: translateX(-100px) scale(0.5); opacity: 0; }
+    100% { transform: translateX(0) scale(1); opacity: 1; }
+}
+
+.personaje-burbuja {
+    background: white;
+    padding: 20px 35px;
+    border-radius: 60px 60px 60px 20px;
+    font-size: 2rem;
+    border: 5px solid #ffb7b7;
+    box-shadow: 0 8px 0 #ff9e9e, inset 0 2px 15px rgba(255,255,255,0.8);
+    flex: 1;
+    animation: burbujaLatido 2s infinite;
+    color: #5a4a4a;
+    font-weight: bold;
+    line-height: 1.4;
+    min-height: 100px;
+    display: flex;
+    align-items: center;
+}
+
+@keyframes burbujaLatido {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.personaje {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 140px;
+}
+
+.personaje-cara {
+    width: 130px;
+    height: 130px;
+    background: linear-gradient(145deg, #ffd966, #ffb347);
+    border-radius: 50%;
+    position: relative;
+    border: 5px solid white;
+    box-shadow: 0 10px 0 #e68900, 0 0 0 3px #ffd966;
+    animation: caraFlotar 3s infinite;
+}
+
+@keyframes caraFlotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.personaje-orejas {
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    width: 25px;
+    height: 30px;
+    background: linear-gradient(145deg, #ffb347, #ff9900);
+    border-radius: 50% 50% 0 0;
+    border: 4px solid white;
+    transform: rotate(-20deg);
+    box-shadow: 0 5px 0 #cc7a00;
+}
+
+.personaje-orejas::after {
+    content: "";
+    position: absolute;
+    top: -15px;
+    left: 70px;
+    width: 25px;
+    height: 30px;
+    background: linear-gradient(145deg, #ffb347, #ff9900);
+    border-radius: 50% 50% 0 0;
+    border: 4px solid white;
+    transform: rotate(20deg);
+    box-shadow: 0 5px 0 #cc7a00;
+}
+
+.personaje-ojos {
+    position: absolute;
+    top: 40px;
+    left: 25px;
+    right: 25px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+}
+
+.personaje-ojo {
+    width: 25px;
+    height: 30px;
+    background: white;
+    border-radius: 50%;
+    border: 3px solid #8b5a2b;
+    position: relative;
+    animation: parpadear 4s infinite;
+}
+
+@keyframes parpadear {
+    0%, 48%, 52%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.1); }
+}
+
+.personaje-ojo::after {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 10px;
+    height: 10px;
+    background: #8b5a2b;
+    border-radius: 50%;
+}
+
+.personaje-nariz {
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 15px;
+    background: #ff7f7f;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+.personaje-boca {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 20px;
+    background: white;
+    border-radius: 0 0 20px 20px;
+    border: 3px solid #ff7f7f;
+    animation: sonreir 3s infinite;
+}
+
+@keyframes sonreir {
+    0%, 100% { border-radius: 0 0 20px 20px; }
+    50% { border-radius: 20px 20px 0 0; }
+}
+
+.personaje-mejillas {
+    position: absolute;
+    bottom: 45px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.personaje-mejilla {
+    width: 20px;
+    height: 12px;
+    background: #ffb6b6;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: rubor 3s infinite;
+}
+
+@keyframes rubor {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
+
+.personaje-nombre {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #ff6b6b;
+    background: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    border: 4px solid #ffb7b7;
+    margin-top: 10px;
+    box-shadow: 0 5px 0 #ff9e9e;
+}
+
+/* ===== CONTENEDOR DE JUEGOS ===== */
+.juego-contenedor {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 80px;
+    padding: 30px 30px 40px;
+    box-shadow: 0 30px 40px rgba(0,0,0,0.2), 0 0 0 8px rgba(255,255,255,0.8);
+    border: 4px solid white;
+    position: relative;
+}
+
+.boton-volver {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: linear-gradient(145deg, #ffd93d, #ffb347);
+    border: none;
+    border: 5px solid white;
+    border-radius: 70px;
+    padding: 15px 35px;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 10px 0 #e68900, 0 0 20px #ffd93d;
+    transition: all 0.1s ease;
+    z-index: 10;
+    color: #5a4a4a;
+}
+
+.boton-volver:hover {
+    background: linear-gradient(145deg, #ffb347, #ffd93d);
+    transform: scale(1.1) rotate(-2deg);
+    box-shadow: 0 15px 0 #e68900, 0 0 30px white;
+}
+
+.boton-volver:active {
+    transform: translateY(8px);
+    box-shadow: 0 2px 0 #e68900;
+}
+
+.titulo-juego {
+    font-size: 3.2rem;
+    background: linear-gradient(45deg, #ff8a8a, #ffb6b6, #ffd3b6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 4px 4px 0 #ffe0e0;
+    text-align: center;
+    margin: 20px 0 20px;
+}
+
+/* ===== INDICADOR DE NIVEL ===== */
+.nivel-indicador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 10px 0 25px;
+    padding: 12px 30px;
+    background: linear-gradient(145deg, #ffeaa7, #ffddaa);
+    border-radius: 70px;
+    border: 5px solid white;
+    box-shadow: 0 8px 0 #e6b87e;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nivel-texto {
+    font-size: 2.2rem;
+    color: #5a4a4a;
+    font-weight: bold;
+}
+
+.nivel-estrellas {
+    font-size: 2.5rem;
+    letter-spacing: 5px;
+    animation: estrellasBrillo 2s infinite;
+}
+
+@keyframes estrellasBrillo {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.5); text-shadow: 0 0 15px gold; }
+}
+
+.estrella {
+    display: inline-block;
+    animation: estrellaGirar 3s infinite;
+}
+
+@keyframes estrellaGirar {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
+}
+
+/* ===== PREGUNTA ===== */
+.pregunta {
+    font-size: 2.8rem;
+    color: #5a4a4a;
+    background: linear-gradient(145deg, #e3f2fd, #d4e9ff);
+    padding: 30px 40px;
+    border-radius: 90px;
+    border: 6px solid white;
+    margin: 20px 0 30px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 12px 0 #b0c4de, inset 0 3px 20px white;
+    animation: preguntaLatido 2s infinite;
+}
+
+@keyframes preguntaLatido {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+/* ===== GRID DE JUEGO ===== */
+.grid-juego {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+/* ===== BOTONES DE HERRAMIENTAS ===== */
+.boton-herramienta {
+    border: 8px solid white;
+    border-radius: 80px;
+    padding: 40px 15px;
+    font-size: 6rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 15px 0 #c06b6b, 0 0 30px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    color: #5a4a4a;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    animation: botonBrillo 3s infinite;
+}
+
+.boton-herramienta::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 70%);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+}
+
+.boton-herramienta:hover::before {
+    transform: rotate(45deg) translate(30%, 30%);
+}
+
+.boton-herramienta span {
+    font-size: 2.5rem;
+    background: rgba(255,255,255,0.95);
+    padding: 15px 35px;
+    border-radius: 70px;
+    border: 4px solid white;
+    box-shadow: inset 0 3px 10px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 2;
+}
+
+.boton-herramienta:hover {
+    transform: scale(1.1) translateY(-10px);
+    box-shadow: 0 20px 0 #4a4a4a, 0 0 50px gold;
+}
+
+.boton-herramienta:active {
+    transform: translateY(5px);
+    box-shadow: 0 8px 0 #4a4a4a;
+}
+
+@keyframes botonBrillo {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.1); }
+}
+
+/* Colores por categoría */
+[data-juego="cocinar"] .boton-herramienta { 
+    background: linear-gradient(145deg, #ffb7b7, #ff8a8a);
+    box-shadow: 0 15px 0 #b25a5a;
+}
+[data-juego="limpiar"] .boton-herramienta { 
+    background: linear-gradient(145deg, #b7e0ff, #8ac9ff);
+    box-shadow: 0 15px 0 #5f8db2;
+}
+[data-juego="lavar"] .boton-herramienta { 
+    background: linear-gradient(145deg, #ffe5b7, #ffd48a);
+    box-shadow: 0 15px 0 #b28f5a;
+}
+[data-juego="planchar"] .boton-herramienta { 
+    background: linear-gradient(145deg, #e5b7ff, #d48aff);
+    box-shadow: 0 15px 0 #8f5ab2;
+}
+[data-juego="jardin"] .boton-herramienta { 
+    background: linear-gradient(145deg, #b7ffb7, #8aff8a);
+    box-shadow: 0 15px 0 #5ab25a;
+}
+[data-juego="ordenar"] .boton-herramienta { 
+    background: linear-gradient(145deg, #ffb7e5, #ff8ad4);
+    box-shadow: 0 15px 0 #b25a8f;
+}
+
+.resaltado {
+    animation: resaltadoEspecial 0.6s infinite alternate !important;
+    border: 10px solid gold !important;
+    box-shadow: 0 0 60px gold !important;
+    transform: scale(1.1);
+}
+
+@keyframes resaltadoEspecial {
+    from { filter: brightness(1); }
+    to { filter: brightness(1.4); background: gold !important; }
+}
+
+/* ===== MENSAJE ===== */
+.mensaje {
+    font-size: 2.2rem;
+    min-height: 90px;
+    padding: 20px 35px;
+    background: linear-gradient(145deg, #b7e0b7, #8ac98a);
+    border-radius: 70px;
+    border: 6px solid white;
+    color: #2d5a2d;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0;
+    box-shadow: inset 0 -8px 0 #5a8f5a, 0 0 30px #b7e0b7;
+}
+
+/* ===== BOTONES DE NIVEL ===== */
+.botones-nivel {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.boton-nivel {
+    background: linear-gradient(145deg, #ffb7b7, #ff8a8a);
+    color: white;
+    font-size: 2rem;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 70px;
+    border: 5px solid white;
+    box-shadow: 0 8px 0 #b25a5a;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+    flex: 1;
+    min-width: 150px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+}
+
+.boton-nivel:nth-child(2) {
+    background: linear-gradient(145deg, #ffe5b7, #ffd48a);
+    box-shadow: 0 8px 0 #b28f5a;
+}
+
+.boton-nivel:nth-child(3) {
+    background: linear-gradient(145deg, #b7ffb7, #8aff8a);
+    box-shadow: 0 8px 0 #5ab25a;
+}
+
+.boton-nivel:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 12px 0 #4a4a4a, 0 0 30px white;
+}
+
+.boton-nivel:active {
+    transform: translateY(4px);
+    box-shadow: 0 4px 0 #4a4a4a;
+}
+
+.boton-nivel.activo {
+    border: 5px solid gold;
+    box-shadow: 0 8px 0 #b8860b, 0 0 30px gold;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+    h1 { font-size: 3rem; }
+    .tarjetas { grid-template-columns: repeat(2, 1fr); }
+    .personaje-burbuja { font-size: 1.6rem; }
+    .boton-herramienta { font-size: 5rem; }
+    .boton-herramienta span { font-size: 2rem; }
+}
+
+@media (max-width: 600px) {
+    h1 { font-size: 2.5rem; }
+    .tarjetas { grid-template-columns: 1fr; }
+    .personaje-container { flex-direction: column; }
+    .personaje-juego { flex-direction: column; }
+    .personaje-burbuja { font-size: 1.4rem; }
+    .grid-juego { gap: 15px; }
+    .boton-herramienta { font-size: 4rem; padding: 25px 10px; }
+    .boton-herramienta span { font-size: 1.5rem; }
+    .pregunta { font-size: 2rem; }
+    .botones-nivel { flex-direction: column; }
+    .boton-nivel { width: 100%; }
+}
